@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="NAudioPianoDemo.PianoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>    
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Rectangle x:Name="RectangleC" Fill="White" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2"></Rectangle>
+        <Rectangle x:Name="RectangleD" Fill="White" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="2"></Rectangle>
+        <Rectangle x:Name="RectangleE" Fill="White" Grid.Column="5" Grid.ColumnSpan="2" Grid.RowSpan="2"></Rectangle>
+        <Rectangle x:Name="RectangleF" Fill="White" Grid.Column="7" Grid.ColumnSpan="2" Grid.RowSpan="2"></Rectangle>
+        <Rectangle x:Name="RectangleG" Fill="White" Grid.Column="9" Grid.ColumnSpan="3" Grid.RowSpan="2"></Rectangle>
+        <Rectangle x:Name="RectangleA" Fill="White" Grid.Column="12" Grid.ColumnSpan="3" Grid.RowSpan="2"></Rectangle>
+        <Rectangle x:Name="RectangleB" Fill="White" Grid.Column="15" Grid.ColumnSpan="2" Grid.RowSpan="2"></Rectangle>
+        <Rectangle x:Name="RectangleCSharp" Fill="Black" Grid.Column="1" Grid.ColumnSpan="2" ></Rectangle>
+        <Rectangle x:Name="RectangleDSharp" Fill="Black" Grid.Column="4" Grid.ColumnSpan="2" ></Rectangle>
+        <Rectangle x:Name="RectangleFSharp" Fill="Black" Grid.Column="8" Grid.ColumnSpan="2" ></Rectangle>
+        <Rectangle x:Name="RectangleGSharp" Fill="Black" Grid.Column="11" Grid.ColumnSpan="2" ></Rectangle>
+        <Rectangle x:Name="RectangleASharp" Fill="Black" Grid.Column="14" Grid.ColumnSpan="2" ></Rectangle>
+
+    </Grid>
+</UserControl>

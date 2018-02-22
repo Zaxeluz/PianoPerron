@@ -1,0 +1,9 @@
+﻿<Window x:Class="NAudioPianoDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:my="clr-namespace:NAudioPianoDemo"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <my:PianoControl x:Name="PianoControl"></my:PianoControl>
+    </Grid>
+</Window>
