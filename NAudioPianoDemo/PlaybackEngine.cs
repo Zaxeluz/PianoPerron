@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
+using NAudio.CoreAudioApi;
+using System.IO;
 
 namespace NAudioPianoDemo
 {
@@ -14,15 +16,18 @@ namespace NAudioPianoDemo
             {"A", "P1D V105 A4.wav"},
         };
 
-        private WaveOut waveOut;
+        private WasapiOut waveOut;
         private MixingSampleProvider mixer;
         private Dictionary<string, ISampleProvider> mixerInputs =
             new Dictionary<string, ISampleProvider>();
+        private Dictionary<string, byte[]> sampleData =
+            new Dictionary<string, byte[]>();
 
         public PlaybackEngine()
         {
+            LoadSampleData();
             //Ahora será la misma instancia todo el tiempo
-            waveOut = new WaveOut();
+            waveOut = new WasapiOut(AudioClientShareMode.Shared, 50);
             //Inicializar el mixer
             mixer =
                 new MixingSampleProvider(WaveFormat.CreateIeeeFloatWaveFormat(44100, 1));
@@ -31,14 +36,31 @@ namespace NAudioPianoDemo
             waveOut.Play();
         }
 
+        void LoadSampleData()
+        {
+            foreach(var kvp in noteFiles)
+            {
+                var reader =
+                    new WaveFileReader("samples\\" + kvp.Value);
+                var data = new byte[reader.Length];
+                reader.Read(data, 0, (int)reader.Length);
+                sampleData[kvp.Key] = data;
+            }
+        }
+
         public void StartNote(string note)
         {
-            string file;
-            if (noteFiles.TryGetValue(note, out file))
+            byte[] data;
+            if (sampleData.TryGetValue(note, out data))
             {
-                var reader = new AudioFileReader("samples\\" + file);
-                mixerInputs[note] = reader;
-                mixer.AddMixerInput((ISampleProvider)reader);
+                var sampleStream =
+                    new RawSourceWaveStream(
+                        new MemoryStream(data),
+                        new WaveFormat(44100, 32, 1));
+                var sampleProvider =
+                    sampleStream.ToSampleProvider();
+                mixerInputs[note] = sampleProvider;
+                mixer.AddMixerInput(sampleProvider);
             }
         }
 
